@@ -3,58 +3,45 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>抽獎系統</title>
+    <title>幸運抽獎系統</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
     <div class="container">
-        <div class="tabs">
-            <button class="tab-btn active">設定抽獎類型</button>
-            <button class="tab-btn">候選名單</button>
-            <button class="tab-btn">獎品名單</button>
-            <button class="tab-btn">設定樣式</button>
-            <button class="tab-btn">抽獎</button>
+        <h1>🎉 幸運抽獎系統 🎉</h1>
+        
+        <div class="input-section">
+            <div class="input-group">
+                <label for="lottery-numbers">抽獎序號</label>
+                <textarea id="lottery-numbers" placeholder="請輸入抽獎序號，多個序號請用逗號分隔"></textarea>
+            </div>
+            
+            <div class="input-group">
+                <label for="excluded-numbers">排除序號</label>
+                <textarea id="excluded-numbers" placeholder="請輸入要排除的序號，多個序號請用逗號分隔"></textarea>
+            </div>
+            
+            <div class="input-group">
+                <label>獎品列表</label>
+                <div id="prizes-container">
+                    <div class="prize-row">
+                        <input type="text" class="prize-name" placeholder="獎品名稱">
+                        <input type="number" class="prize-quantity" min="1" value="1" placeholder="數量">
+                        <button class="add-prize-btn"><i class="fas fa-plus"></i></button>
+                    </div>
+                </div>
+            </div>
         </div>
 
-        <div class="content">
-            <h2>獎品名單預覽</h2>
-            <table class="prize-table">
-                <thead>
-                    <tr>
-                        <th>#</th>
-                        <th>名稱</th>
-                        <th>數量</th>
-                        <th>操作</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td>頭獎</td>
-                        <td><span class="quantity">1</span></td>
-                        <td><button class="delete-btn">×</button></td>
-                    </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>一獎</td>
-                        <td><span class="quantity">1</span></td>
-                        <td><button class="delete-btn">×</button></td>
-                    </tr>
-                    <tr>
-                        <td>3</td>
-                        <td>二獎</td>
-                        <td><span class="quantity">2</span></td>
-                        <td><button class="delete-btn">×</button></td>
-                    </tr>
-                    <tr>
-                        <td>4</td>
-                        <td>三獎</td>
-                        <td><span class="quantity">2</span></td>
-                        <td><button class="delete-btn">×</button></td>
-                    </tr>
-                </tbody>
-            </table>
+        <button id="start-lottery" class="lottery-button">
+            <i class="fas fa-gift"></i> 開始抽獎
+        </button>
+
+        <div id="wheel-container" class="wheel-container">
+            <div class="wheel">
+                <div class="wheel-inner"></div>
+            </div>
         </div>
     </div>
     <script src="script.js"></script>
