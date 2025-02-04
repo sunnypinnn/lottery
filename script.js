@@ -12,16 +12,38 @@ document.addEventListener('DOMContentLoaded', function() {
                 placeholder="請輸入獎品名稱"
                 value="獎品 ${index}"
             >
-            <input type="number" 
-                class="prize-quantity" 
-                min="1" 
-                value="1"
-                title="獎品數量"
-            >
+            <div class="prize-quantity-wrapper">
+                <input type="number" 
+                    class="prize-quantity" 
+                    min="1" 
+                    value="1"
+                    title="獎品數量"
+                >
+                <div class="prize-quantity-controls">
+                    <button class="prize-quantity-up" title="增加數量">▲</button>
+                    <button class="prize-quantity-down" title="減少數量">▼</button>
+                </div>
+            </div>
             <button class="delete-btn" title="刪除此獎項">
                 <i class="fas fa-times"></i>
             </button>
         `;
+
+        // 綁定數量控制按鈕事件
+        const quantityInput = prizeDiv.querySelector('.prize-quantity');
+        const upBtn = prizeDiv.querySelector('.prize-quantity-up');
+        const downBtn = prizeDiv.querySelector('.prize-quantity-down');
+
+        upBtn.addEventListener('click', () => {
+            quantityInput.value = parseInt(quantityInput.value) + 1;
+        });
+
+        downBtn.addEventListener('click', () => {
+            const newValue = parseInt(quantityInput.value) - 1;
+            if (newValue >= 1) {
+                quantityInput.value = newValue;
+            }
+        });
 
         // 綁定刪除按鈕事件
         const deleteBtn = prizeDiv.querySelector('.delete-btn');

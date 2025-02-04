@@ -139,12 +139,50 @@ textarea {
 .prize-input .prize-quantity::-webkit-inner-spin-button {
     -webkit-appearance: none;
     appearance: none;
-    background: var(--primary-color);
-    height: 45px;
-    opacity: 1;
+    margin: 0;
+}
+
+.prize-input .prize-quantity-wrapper {
     position: relative;
+    display: inline-block;
+}
+
+.prize-input .prize-quantity-controls {
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    display: flex;
+    flex-direction: column;
     width: 20px;
-    border-radius: 0 8px 8px 0;
+    border-left: 1px solid #eee;
+}
+
+.prize-input .prize-quantity-up,
+.prize-input .prize-quantity-down {
+    flex: 1;
+    background: #f8f8f8;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    color: #666;
+}
+
+.prize-input .prize-quantity-up:hover,
+.prize-input .prize-quantity-down:hover {
+    background: #eee;
+}
+
+.prize-input .prize-quantity-up {
+    border-radius: 0 8px 0 0;
+    border-bottom: 1px solid #eee;
+}
+
+.prize-input .prize-quantity-down {
+    border-radius: 0 0 8px 0;
 }
 
 .prize-input .delete-btn {
