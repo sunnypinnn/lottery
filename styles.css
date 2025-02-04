@@ -130,26 +130,6 @@ textarea {
     border-radius: 6px;
 }
 
-.prize-input .prize-quantity {
-    width: 50px;
-    text-align: right;
-    padding-right: 20px;
-    padding-left: 0;
-    margin-left: -10px;
-    appearance: textfield;
-    -moz-appearance: textfield;
-    -webkit-appearance: textfield;
-    font-weight: 500;
-    border: none;
-}
-
-.prize-input .prize-quantity::-webkit-outer-spin-button,
-.prize-input .prize-quantity::-webkit-inner-spin-button {
-    -webkit-appearance: none;
-    appearance: none;
-    margin: 0;
-}
-
 .prize-input .prize-quantity-wrapper {
     position: relative;
     display: inline-block;
@@ -157,6 +137,28 @@ textarea {
     border: 1px solid #eee;
     border-radius: 6px;
     overflow: hidden;
+    background-color: #fafafa;
+}
+
+.prize-input .prize-quantity {
+    width: 50px;
+    text-align: right;
+    padding: 0.5rem 0.8rem;
+    padding-right: 20px;
+    margin-left: 0;
+    appearance: textfield;
+    -moz-appearance: textfield;
+    -webkit-appearance: textfield;
+    font-weight: 500;
+    border: none;
+    background: transparent;
+}
+
+.prize-input .prize-quantity::-webkit-outer-spin-button,
+.prize-input .prize-quantity::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    appearance: none;
+    margin: 0;
 }
 
 .prize-input .prize-quantity-controls {
@@ -168,6 +170,7 @@ textarea {
     flex-direction: column;
     width: 18px;
     border-left: 1px solid #eee;
+    background-color: #fff;
 }
 
 .prize-input .prize-quantity-up,
