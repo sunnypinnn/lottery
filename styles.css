@@ -63,14 +63,69 @@ textarea {
     display: flex;
     gap: 1rem;
     align-items: center;
+    margin-bottom: 1rem;
+    background: #fff;
+    padding: 0.5rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.prize-input:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
 }
 
 .prize-input input {
-    flex: 1;
     padding: 0.8rem;
-    border: 2px solid #ddd;
+    border: 2px solid #eee;
     border-radius: 8px;
     font-size: 1rem;
+    transition: border-color 0.2s;
+}
+
+.prize-input input:focus {
+    outline: none;
+    border-color: var(--primary-color);
+}
+
+.prize-name {
+    flex: 1;
+}
+
+.prize-quantity {
+    width: 100px;
+    text-align: center;
+}
+
+.prize-input .delete-btn {
+    background: none;
+    border: none;
+    color: #ff6b6b;
+    font-size: 1.2rem;
+    cursor: pointer;
+    padding: 0.5rem;
+    border-radius: 50%;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+}
+
+.prize-input .delete-btn:hover {
+    background-color: #fff0f0;
+    color: #ff5252;
+    transform: scale(1.1);
+}
+
+/* 修改數字輸入框的箭頭樣式 */
+.prize-quantity::-webkit-inner-spin-button,
+.prize-quantity::-webkit-outer-spin-button {
+    opacity: 1;
+    height: 30px;
+    cursor: pointer;
 }
 
 .lottery-button {
@@ -137,55 +192,4 @@ textarea {
     background: white;
     border-radius: 50%;
     z-index: 2;
-}
-
-.prize-row {
-    display: flex;
-    gap: 1rem;
-    margin-bottom: 1rem;
-    align-items: center;
-}
-
-.prize-name {
-    flex: 1;
-    padding: 0.8rem;
-    border: 2px solid #ddd;
-    border-radius: 8px;
-    font-size: 1rem;
-}
-
-.prize-quantity {
-    width: 80px;
-    padding: 0.8rem;
-    border: 2px solid #ddd;
-    border-radius: 8px;
-    font-size: 1rem;
-}
-
-.add-prize-btn {
-    background-color: var(--primary-color);
-    color: white;
-    border: none;
-    border-radius: 8px;
-    padding: 0.8rem;
-    cursor: pointer;
-    transition: background-color 0.2s;
-}
-
-.add-prize-btn:hover {
-    background-color: #ff5252;
-}
-
-.remove-prize-btn {
-    background-color: #dc3545;
-    color: white;
-    border: none;
-    border-radius: 8px;
-    padding: 0.8rem;
-    cursor: pointer;
-    transition: background-color 0.2s;
-}
-
-.remove-prize-btn:hover {
-    background-color: #c82333;
 } 
