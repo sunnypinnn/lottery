@@ -109,6 +109,7 @@ textarea {
     font-size: 0.95rem;
     transition: all 0.3s ease;
     background-color: #fafafa;
+    box-sizing: border-box;
 }
 
 .prize-input input:hover {
@@ -128,6 +129,8 @@ textarea {
     font-weight: 500;
     border: 1px solid #eee;
     border-radius: 6px;
+    padding: 0.5rem 0.8rem;
+    background-color: #fafafa;
 }
 
 .prize-input .prize-quantity-wrapper {
