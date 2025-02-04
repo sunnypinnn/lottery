@@ -57,25 +57,25 @@ textarea {
 #prizes-container {
     display: flex;
     flex-direction: column;
-    gap: 1.2rem;
-    padding: 0.5rem;
-    margin: 0.5rem 0;
+    gap: 0.5rem;
+    padding: 0.3rem;
+    margin: 0.3rem 0;
 }
 
 .prize-input {
     display: grid;
     grid-template-columns: 1fr 120px 40px;
-    gap: 1rem;
+    gap: 0.8rem;
     align-items: center;
-    padding: 1.2rem;
+    padding: 0.8rem;
     background: white;
-    border: 2px solid #f0f0f0;
-    border-radius: 12px;
+    border: 1px solid #f0f0f0;
+    border-radius: 8px;
     transition: all 0.3s ease;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.02);
+    box-shadow: 0 1px 4px rgba(0,0,0,0.02);
     position: relative;
     overflow: hidden;
-    margin: 2px 0;
+    margin: 1px 0;
 }
 
 .prize-input::before {
@@ -101,10 +101,10 @@ textarea {
 }
 
 .prize-input input {
-    padding: 0.8rem 1rem;
-    border: 2px solid #eee;
-    border-radius: 8px;
-    font-size: 1rem;
+    padding: 0.5rem 0.8rem;
+    border: 1px solid #eee;
+    border-radius: 6px;
+    font-size: 0.95rem;
     transition: all 0.3s ease;
     background-color: #fafafa;
 }
@@ -154,7 +154,7 @@ textarea {
     bottom: 0;
     display: flex;
     flex-direction: column;
-    width: 20px;
+    width: 18px;
     border-left: 1px solid #eee;
 }
 
@@ -167,7 +167,7 @@ textarea {
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 12px;
+    font-size: 10px;
     color: #666;
 }
 
@@ -186,12 +186,12 @@ textarea {
 }
 
 .prize-input .delete-btn {
-    width: 36px;
-    height: 36px;
+    width: 32px;
+    height: 32px;
     border: none;
     background: none;
     color: #ff6b6b;
-    font-size: 1.2rem;
+    font-size: 1rem;
     cursor: pointer;
     border-radius: 50%;
     display: flex;
