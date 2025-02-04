@@ -88,32 +88,67 @@ document.addEventListener('DOMContentLoaded', function() {
     `;
     document.querySelector('.container').appendChild(historySection);
 
+    // 創建結果顯示容器
+    const resultsContainer = document.createElement('div');
+    resultsContainer.className = 'lottery-results';
+    resultsContainer.innerHTML = `
+        <div class="results-content">
+            <h2>抽獎結果</h2>
+            <div class="results-list"></div>
+            <button class="close-results">關閉</button>
+        </div>
+    `;
+    document.body.appendChild(resultsContainer);
+
+    // 綁定關閉按鈕事件
+    resultsContainer.querySelector('.close-results').addEventListener('click', () => {
+        resultsContainer.classList.remove('show');
+    });
+
     // 抽獎按鈕點擊事件
     document.getElementById('start-lottery').addEventListener('click', function() {
-        // 獲取所有獎品資訊
-        const prizes = [];
-        document.querySelectorAll('.prize-input').forEach(div => {
-            const name = div.querySelector('.prize-name').value;
-            const quantity = parseInt(div.querySelector('.prize-quantity').value);
-            prizes.push({ name, quantity });
-        });
-
-        // 獲取抽獎序號
+        // 檢查是否有足夠的序號
         const numbers = document.getElementById('lottery-numbers').value
             .split(/[,，]/)
             .map(n => n.trim())
             .filter(n => n);
 
-        // 獲取排除序號
         const excludedNumbers = document.getElementById('excluded-numbers').value
             .split(/[,，]/)
             .map(n => n.trim())
             .filter(n => n);
 
-        // 過濾掉排除的序號
         const validNumbers = numbers.filter(n => !excludedNumbers.includes(n));
 
-        // 直接顯示結果並保存到歷史記錄
+        // 獲取獎品資訊
+        const prizes = [];
+        document.querySelectorAll('.prize-input').forEach(div => {
+            const name = div.querySelector('.prize-name').value;
+            const quantity = parseInt(div.querySelector('.prize-quantity').value);
+            if (name && quantity > 0) {
+                prizes.push({ name, quantity });
+            }
+        });
+
+        // 檢查是否有足夠的序號和獎品
+        if (validNumbers.length === 0) {
+            alert('請輸入抽獎序號！');
+            return;
+        }
+
+        if (prizes.length === 0) {
+            alert('請設定獎品！');
+            return;
+        }
+
+        // 計算總需要抽出的數量
+        const totalNeeded = prizes.reduce((sum, prize) => sum + prize.quantity, 0);
+        if (validNumbers.length < totalNeeded) {
+            alert(`序號數量不足！需要 ${totalNeeded} 個，但只有 ${validNumbers.length} 個有效序號。`);
+            return;
+        }
+
+        // 進行抽獎
         const result = drawLottery(validNumbers, prizes);
         showLotteryResults(result);
         saveToHistory(result);
