@@ -71,12 +71,12 @@ textarea {
     align-items: center;
     padding: 0.8rem;
     background: white;
-    border: 1px solid #f0f0f0;
+    border: 1px solid #eee;
     border-radius: 8px;
     transition: all 0.3s ease;
     box-shadow: 0 1px 4px rgba(0,0,0,0.02);
     position: relative;
-    overflow: hidden;
+    overflow: visible;
     margin: 1px 0;
 }
 
@@ -126,16 +126,21 @@ textarea {
 .prize-input .prize-name {
     width: 100%;
     font-weight: 500;
+    border: 1px solid #eee;
+    border-radius: 6px;
 }
 
 .prize-input .prize-quantity {
     width: 50px;
     text-align: right;
     padding-right: 20px;
+    padding-left: 0;
+    margin-left: -10px;
     appearance: textfield;
     -moz-appearance: textfield;
     -webkit-appearance: textfield;
     font-weight: 500;
+    border: none;
 }
 
 .prize-input .prize-quantity::-webkit-outer-spin-button,
@@ -148,6 +153,10 @@ textarea {
 .prize-input .prize-quantity-wrapper {
     position: relative;
     display: inline-block;
+    margin-left: -10px;
+    border: 1px solid #eee;
+    border-radius: 6px;
+    overflow: hidden;
 }
 
 .prize-input .prize-quantity-controls {
