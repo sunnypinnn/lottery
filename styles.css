@@ -241,6 +241,7 @@ textarea {
     display: none;
     justify-content: center;
     align-items: center;
+    z-index: 1000;
 }
 
 .wheel {
@@ -263,6 +264,7 @@ textarea {
     );
     transform: rotate(0deg);
     transition: transform 4s cubic-bezier(0.17, 0.67, 0.12, 0.99);
+    will-change: transform;
 }
 
 .wheel-inner {

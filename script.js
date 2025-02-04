@@ -79,13 +79,13 @@ document.addEventListener('DOMContentLoaded', function() {
 
         // 獲取抽獎序號
         const numbers = document.getElementById('lottery-numbers').value
-            .split(',')
+            .split(/[,，]/)  // 同時支援中文逗號和英文逗號
             .map(n => n.trim())
             .filter(n => n);
 
         // 獲取排除序號
         const excludedNumbers = document.getElementById('excluded-numbers').value
-            .split(',')
+            .split(/[,，]/)  // 同時支援中文逗號和英文逗號
             .map(n => n.trim())
             .filter(n => n);
 
@@ -94,16 +94,35 @@ document.addEventListener('DOMContentLoaded', function() {
 
         // 顯示輪盤
         wheelContainer.style.display = 'flex';
+        
+        // 強制重繪
+        wheelContainer.offsetHeight;
+
         const wheel = document.querySelector('.wheel');
+        
+        // 確保初始狀態
+        wheel.style.transform = 'rotate(0deg)';
+        
+        // 強制重繪
+        wheel.offsetHeight;
+        
+        // 設定新的旋轉角度
         const rotation = 3600 + Math.floor(Math.random() * 360);
         wheel.style.transform = `rotate(${rotation}deg)`;
 
         // 4秒後顯示結果
         setTimeout(() => {
             wheelContainer.style.display = 'none';
-            wheel.style.transform = 'rotate(0deg)';
             
-            // 抽獎並顯示結果
+            // 重置輪盤位置（延遲執行以確保動畫完成）
+            setTimeout(() => {
+                wheel.style.transition = 'none';  // 暫時關閉過渡效果
+                wheel.style.transform = 'rotate(0deg)';
+                wheel.offsetHeight;  // 強制重繪
+                wheel.style.transition = '';  // 恢復過渡效果
+            }, 100);
+            
+            // 顯示抽獎結果
             showLotteryResults(validNumbers, prizes);
         }, 4000);
     });
