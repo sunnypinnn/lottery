@@ -55,77 +55,84 @@ textarea {
 }
 
 #prizes-container {
-    display: grid;
-    gap: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
 }
 
 .prize-input {
-    display: flex;
+    display: grid;
+    grid-template-columns: 1fr 120px 40px;
     gap: 1rem;
     align-items: center;
-    margin-bottom: 1rem;
-    background: #fff;
-    padding: 0.5rem;
+    padding: 1rem;
+    background: white;
+    border: 1px solid #eee;
     border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-    transition: transform 0.2s, box-shadow 0.2s;
+    transition: all 0.3s ease;
 }
 
 .prize-input:hover {
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
     transform: translateY(-2px);
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-}
-
-.prize-input input {
-    padding: 0.8rem;
-    border: 2px solid #eee;
-    border-radius: 8px;
-    font-size: 1rem;
-    transition: border-color 0.2s;
-}
-
-.prize-input input:focus {
-    outline: none;
     border-color: var(--primary-color);
 }
 
-.prize-name {
-    flex: 1;
+.prize-input input {
+    padding: 0.8rem 1rem;
+    border: 2px solid #eee;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: all 0.3s ease;
 }
 
-.prize-quantity {
-    width: 100px;
+.prize-input input:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(255,107,107,0.1);
+    outline: none;
+}
+
+.prize-input .prize-name {
+    width: 100%;
+}
+
+.prize-input .prize-quantity {
+    width: 100%;
     text-align: center;
+    -moz-appearance: textfield;
+}
+
+.prize-input .prize-quantity::-webkit-outer-spin-button,
+.prize-input .prize-quantity::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    background: var(--primary-color);
+    height: 45px;
+    opacity: 1;
+    position: relative;
+    width: 20px;
+    border-radius: 0 8px 8px 0;
 }
 
 .prize-input .delete-btn {
-    background: none;
+    width: 36px;
+    height: 36px;
     border: none;
+    background: none;
     color: #ff6b6b;
     font-size: 1.2rem;
     cursor: pointer;
-    padding: 0.5rem;
     border-radius: 50%;
-    transition: all 0.2s;
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 32px;
-    height: 32px;
+    transition: all 0.3s ease;
+    padding: 0;
 }
 
 .prize-input .delete-btn:hover {
     background-color: #fff0f0;
     color: #ff5252;
     transform: scale(1.1);
-}
-
-/* 修改數字輸入框的箭頭樣式 */
-.prize-quantity::-webkit-inner-spin-button,
-.prize-quantity::-webkit-outer-spin-button {
-    opacity: 1;
-    height: 30px;
-    cursor: pointer;
 }
 
 .lottery-button {

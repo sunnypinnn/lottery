@@ -1,20 +1,44 @@
 document.addEventListener('DOMContentLoaded', function() {
     // 生成獎品輸入欄位
     const prizesContainer = document.getElementById('prizes-container');
-    for (let i = 1; i <= 10; i++) {
+    
+    // 創建獎品輸入行
+    function createPrizeInput(index) {
         const prizeDiv = document.createElement('div');
         prizeDiv.className = 'prize-input';
         prizeDiv.innerHTML = `
-            <input type="text" class="prize-name" id="prize-${i}" placeholder="獎品 ${i}">
-            <input type="number" class="prize-quantity" min="1" value="1" placeholder="數量">
-            <button class="delete-btn" title="刪除獎品"><i class="fas fa-times"></i></button>
+            <input type="text" 
+                class="prize-name" 
+                placeholder="請輸入獎品名稱"
+                value="獎品 ${index}"
+            >
+            <input type="number" 
+                class="prize-quantity" 
+                min="1" 
+                value="1"
+                title="獎品數量"
+            >
+            <button class="delete-btn" title="刪除此獎項">
+                <i class="fas fa-times"></i>
+            </button>
         `;
-        
+
         // 綁定刪除按鈕事件
         const deleteBtn = prizeDiv.querySelector('.delete-btn');
-        deleteBtn.addEventListener('click', () => prizeDiv.remove());
-        
-        prizesContainer.appendChild(prizeDiv);
+        deleteBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            prizeDiv.style.opacity = '0';
+            setTimeout(() => {
+                prizeDiv.remove();
+            }, 300);
+        });
+
+        return prizeDiv;
+    }
+
+    // 初始化獎品列表
+    for (let i = 1; i <= 10; i++) {
+        prizesContainer.appendChild(createPrizeInput(i));
     }
 
     // 隱藏輪盤
