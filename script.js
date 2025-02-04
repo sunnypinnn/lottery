@@ -63,6 +63,22 @@ document.addEventListener('DOMContentLoaded', function() {
         prizesContainer.appendChild(createPrizeInput(i));
     }
 
+    // 在獎品列表區域添加新增按鈕
+    const addPrizeButton = document.createElement('button');
+    addPrizeButton.className = 'add-prize-button';
+    addPrizeButton.innerHTML = '<i class="fas fa-plus"></i> 新增獎品';
+    
+    // 將按鈕插入到獎品列表區域的最後
+    const prizeGroup = document.querySelector('.input-group:last-child');
+    prizeGroup.appendChild(addPrizeButton);
+
+    // 綁定新增按鈕點擊事件
+    addPrizeButton.addEventListener('click', () => {
+        const nextIndex = document.querySelectorAll('.prize-input').length + 1;
+        const newPrize = createPrizeInput(nextIndex);
+        prizesContainer.appendChild(newPrize);
+    });
+
     // 創建歷史記錄區域
     const historySection = document.createElement('div');
     historySection.className = 'history-section';

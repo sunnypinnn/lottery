@@ -416,4 +416,30 @@ textarea {
 
 .history-prize strong {
     color: var(--primary-color);
+}
+
+.add-prize-button {
+    margin-top: 0.5rem;
+    padding: 0.6rem 1.2rem;
+    background-color: #fff;
+    border: 1px dashed var(--primary-color);
+    color: var(--primary-color);
+    border-radius: 6px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+    width: 100%;
+}
+
+.add-prize-button:hover {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.add-prize-button i {
+    font-size: 0.8rem;
 } 
