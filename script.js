@@ -230,24 +230,34 @@ document.addEventListener('DOMContentLoaded', function() {
         historyList.insertBefore(historyItem, historyList.firstChild);
     }
 
-    // 在 DOMContentLoaded 事件處理函數中添加
+    // 產生名單相關代碼
     const generateButton = document.getElementById('generate-numbers');
     const generateModal = document.getElementById('generate-modal');
+    
+    // 檢查元素是否存在
+    if (!generateButton || !generateModal) {
+        console.error('找不到產生名單相關元素');
+        return;
+    }
+
     const modalCancel = generateModal.querySelector('.modal-cancel');
     const modalConfirm = generateModal.querySelector('.modal-confirm');
 
     // 顯示產生名單的彈窗
     generateButton.addEventListener('click', () => {
+        console.log('點擊產生名單按鈕');  // 添加日誌
         generateModal.classList.add('show');
     });
 
     // 關閉彈窗
     modalCancel.addEventListener('click', () => {
+        console.log('點擊取消按鈕');  // 添加日誌
         generateModal.classList.remove('show');
     });
 
     // 產生名單
     modalConfirm.addEventListener('click', () => {
+        console.log('點擊確認按鈕');  // 添加日誌
         const prefix = document.getElementById('prefix').value;
         const startNum = parseInt(document.getElementById('start-num').value);
         const endNum = parseInt(document.getElementById('end-num').value);
@@ -278,7 +288,7 @@ document.addEventListener('DOMContentLoaded', function() {
             numbers.push(`${prefix}${num}${suffix}`);
         }
 
-        // 將序號填入文本框，如果原本有內容則追加
+        // 將序號填入文本框
         const lotteryNumbers = document.getElementById('lottery-numbers');
         const existingNumbers = lotteryNumbers.value.trim();
         lotteryNumbers.value = existingNumbers 

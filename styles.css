@@ -450,15 +450,43 @@ textarea {
     position: relative;
     display: flex;
     gap: 0.8rem;
+    align-items: flex-start;
 }
 
+/* 序號輸入框樣式 */
+.input-with-button textarea {
+    flex: 1;
+    min-height: 120px;
+    padding: 1rem;
+    border: 1px solid #eee;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    resize: vertical;
+    transition: all 0.3s ease;
+    background-color: #fafafa;
+}
+
+.input-with-button textarea:hover {
+    background-color: white;
+    border-color: #e0e0e0;
+}
+
+.input-with-button textarea:focus {
+    background-color: white;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(255,107,107,0.1);
+    outline: none;
+}
+
+/* 產生名單按鈕樣式 */
 .generate-button {
     height: 40px;
     min-width: 120px;
     padding: 0 1.2rem;
-    background-color: var(--primary-color);
-    color: white;
-    border: none;
+    background-color: white;
+    color: var(--primary-color);
+    border: 1px solid var(--primary-color);
     border-radius: 6px;
     cursor: pointer;
     display: flex;
@@ -468,10 +496,28 @@ textarea {
     font-size: 0.9rem;
     transition: all 0.3s ease;
     white-space: nowrap;
+    font-weight: 500;
+}
+
+.generate-button:hover {
+    background-color: var(--primary-color);
+    color: white;
+    transform: translateY(-1px);
 }
 
 .generate-button:active {
     transform: translateY(1px);
+}
+
+.generate-button i {
+    font-size: 0.85rem;
+}
+
+/* 序號的placeholder文字樣式 */
+.input-with-button textarea::placeholder {
+    color: #999;
+    font-size: 0.9rem;
+    line-height: 1.4;
 }
 
 /* 彈窗樣式 */
