@@ -229,4 +229,74 @@ document.addEventListener('DOMContentLoaded', function() {
 
         historyList.insertBefore(historyItem, historyList.firstChild);
     }
+
+    // 在 DOMContentLoaded 事件處理函數中添加
+    const generateButton = document.getElementById('generate-numbers');
+    const generateModal = document.getElementById('generate-modal');
+    const modalCancel = generateModal.querySelector('.modal-cancel');
+    const modalConfirm = generateModal.querySelector('.modal-confirm');
+
+    // 顯示產生名單的彈窗
+    generateButton.addEventListener('click', () => {
+        generateModal.classList.add('show');
+    });
+
+    // 關閉彈窗
+    modalCancel.addEventListener('click', () => {
+        generateModal.classList.remove('show');
+    });
+
+    // 產生名單
+    modalConfirm.addEventListener('click', () => {
+        const prefix = document.getElementById('prefix').value;
+        const startNum = parseInt(document.getElementById('start-num').value);
+        const endNum = parseInt(document.getElementById('end-num').value);
+        const suffix = document.getElementById('suffix').value;
+
+        // 檢查起始和結束數字
+        if (isNaN(startNum) || isNaN(endNum)) {
+            alert('請輸入有效的數字範圍！');
+            return;
+        }
+
+        if (endNum < startNum) {
+            alert('結束數字必須大於或等於起始數字！');
+            return;
+        }
+
+        if (endNum - startNum > 1000) {
+            if (!confirm('你確定要產生超過1000個序號嗎？')) {
+                return;
+            }
+        }
+
+        // 產生序號
+        const numbers = [];
+        const digits = endNum.toString().length;
+        for (let i = startNum; i <= endNum; i++) {
+            const num = i.toString().padStart(digits, '0');
+            numbers.push(`${prefix}${num}${suffix}`);
+        }
+
+        // 將序號填入文本框，如果原本有內容則追加
+        const lotteryNumbers = document.getElementById('lottery-numbers');
+        const existingNumbers = lotteryNumbers.value.trim();
+        lotteryNumbers.value = existingNumbers 
+            ? existingNumbers + '，' + numbers.join('，')
+            : numbers.join('，');
+
+        // 關閉彈窗並清空輸入
+        generateModal.classList.remove('show');
+        document.getElementById('prefix').value = '';
+        document.getElementById('start-num').value = '';
+        document.getElementById('end-num').value = '';
+        document.getElementById('suffix').value = '';
+    });
+
+    // 點擊彈窗背景關閉
+    generateModal.addEventListener('click', (e) => {
+        if (e.target === generateModal) {
+            generateModal.classList.remove('show');
+        }
+    });
 }); 

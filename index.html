@@ -14,9 +14,14 @@
         <div class="input-section">
             <div class="input-group">
                 <label for="lottery-numbers">抽獎序號</label>
-                <textarea id="lottery-numbers" 
-                    placeholder="請輸入抽獎序號，多個序號請用逗號分隔（支援中文、英文逗號）
+                <div class="input-with-button">
+                    <textarea id="lottery-numbers" 
+                        placeholder="請輸入抽獎序號，多個序號請用逗號分隔（支援中文、英文逗號）
 例如：A001,A002,A003 或 A001，A002，A003"></textarea>
+                    <button id="generate-numbers" class="generate-button">
+                        <i class="fas fa-list-ol"></i> 產生名單
+                    </button>
+                </div>
             </div>
             
             <div class="input-group">
@@ -44,6 +49,36 @@
             </div>
         </div>
     </div>
+
+    <!-- 產生名單的彈窗 -->
+    <div id="generate-modal" class="modal">
+        <div class="modal-content">
+            <h2>產生名單編號</h2>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label>名單字首</label>
+                    <input type="text" id="prefix" placeholder="例如：A">
+                </div>
+                <div class="form-group">
+                    <label>編號範圍</label>
+                    <div class="range-inputs">
+                        <input type="number" id="start-num" min="1" placeholder="起始數字">
+                        <span>到</span>
+                        <input type="number" id="end-num" min="1" placeholder="結束數字">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>名單字尾</label>
+                    <input type="text" id="suffix" placeholder="例如：號">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="modal-cancel">取消</button>
+                <button class="modal-confirm">確定</button>
+            </div>
+        </div>
+    </div>
+
     <script src="script.js"></script>
 </body>
 </html> 
