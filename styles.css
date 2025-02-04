@@ -99,12 +99,15 @@ textarea {
 .prize-input .prize-quantity {
     width: 100%;
     text-align: center;
+    appearance: textfield;
     -moz-appearance: textfield;
+    -webkit-appearance: textfield;
 }
 
 .prize-input .prize-quantity::-webkit-outer-spin-button,
 .prize-input .prize-quantity::-webkit-inner-spin-button {
     -webkit-appearance: none;
+    appearance: none;
     background: var(--primary-color);
     height: 45px;
     opacity: 1;
