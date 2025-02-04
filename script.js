@@ -244,15 +244,28 @@ document.addEventListener('DOMContentLoaded', function() {
     const modalConfirm = generateModal.querySelector('.modal-confirm');
 
     // 顯示產生名單的彈窗
-    generateButton.addEventListener('click', () => {
-        console.log('點擊產生名單按鈕');  // 添加日誌
+    generateButton.addEventListener('click', (e) => {
+        e.preventDefault();  // 防止默認行為
+        e.stopPropagation();  // 防止事件冒泡
+        console.log('點擊產生名單按鈕');
+        generateModal.style.display = 'flex';  // 直接設置 display
         generateModal.classList.add('show');
     });
 
     // 關閉彈窗
-    modalCancel.addEventListener('click', () => {
-        console.log('點擊取消按鈕');  // 添加日誌
+    modalCancel.addEventListener('click', (e) => {
+        e.preventDefault();
+        console.log('點擊取消按鈕');
+        generateModal.style.display = 'none';
         generateModal.classList.remove('show');
+    });
+
+    // 點擊彈窗背景關閉
+    generateModal.addEventListener('click', (e) => {
+        if (e.target === generateModal) {
+            generateModal.style.display = 'none';
+            generateModal.classList.remove('show');
+        }
     });
 
     // 產生名單
@@ -301,12 +314,5 @@ document.addEventListener('DOMContentLoaded', function() {
         document.getElementById('start-num').value = '';
         document.getElementById('end-num').value = '';
         document.getElementById('suffix').value = '';
-    });
-
-    // 點擊彈窗背景關閉
-    generateModal.addEventListener('click', (e) => {
-        if (e.target === generateModal) {
-            generateModal.classList.remove('show');
-        }
     });
 }); 

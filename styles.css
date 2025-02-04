@@ -535,7 +535,7 @@ textarea {
 }
 
 .modal.show {
-    display: flex;
+    display: flex !important;  /* 強制顯示 */
 }
 
 .modal-content {
@@ -545,6 +545,9 @@ textarea {
     width: 90%;
     max-width: 500px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    position: relative;  /* 確保內容正確定位 */
+    transform: translateY(0);  /* 防止內容偏移 */
+    margin: auto;  /* 確保置中 */
 }
 
 .modal-content h2 {
