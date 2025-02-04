@@ -34,4 +34,26 @@ document.addEventListener('DOMContentLoaded', function() {
             wheel.style.transform = 'rotate(0deg)';
         }, 4000);
     });
+
+    // 標籤切換功能
+    const tabBtns = document.querySelectorAll('.tab-btn');
+    
+    tabBtns.forEach(btn => {
+        btn.addEventListener('click', function() {
+            // 移除所有標籤的 active 類別
+            tabBtns.forEach(b => b.classList.remove('active'));
+            // 添加當前標籤的 active 類別
+            this.classList.add('active');
+        });
+    });
+
+    // 刪除按鈕功能
+    const deleteBtns = document.querySelectorAll('.delete-btn');
+    
+    deleteBtns.forEach(btn => {
+        btn.addEventListener('click', function() {
+            const row = this.closest('tr');
+            row.remove();
+        });
+    });
 }); 

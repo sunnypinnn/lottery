@@ -1,8 +1,9 @@
 :root {
-    --primary-color: #ff6b6b;
+    --primary-color: #007bff;
     --secondary-color: #4ecdc4;
-    --background-color: #f7f7f7;
+    --background-color: #f8f9fa;
     --text-color: #2d3436;
+    --border-color: #dee2e6;
 }
 
 body {
@@ -18,8 +19,82 @@ body {
     margin: 2rem auto;
     padding: 2rem;
     background: white;
-    border-radius: 15px;
-    box-shadow: 0 0 20px rgba(0,0,0,0.1);
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.tabs {
+    display: flex;
+    border-bottom: 1px solid var(--border-color);
+    background-color: #f8f9fa;
+    border-radius: 8px 8px 0 0;
+}
+
+.tab-btn {
+    padding: 1rem 1.5rem;
+    border: none;
+    background: none;
+    cursor: pointer;
+    font-size: 0.9rem;
+    color: #666;
+    border-bottom: 2px solid transparent;
+}
+
+.tab-btn.active {
+    color: var(--primary-color);
+    border-bottom: 2px solid var(--primary-color);
+}
+
+.content {
+    padding: 2rem;
+}
+
+h2 {
+    margin-top: 0;
+    color: #333;
+    font-size: 1.2rem;
+    margin-bottom: 1.5rem;
+}
+
+.prize-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.prize-table th,
+.prize-table td {
+    padding: 0.75rem;
+    text-align: left;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.prize-table th {
+    background-color: #f8f9fa;
+    font-weight: 500;
+    color: #666;
+}
+
+.quantity {
+    display: inline-block;
+    background-color: var(--primary-color);
+    color: white;
+    padding: 0.2rem 0.5rem;
+    border-radius: 12px;
+    font-size: 0.8rem;
+}
+
+.delete-btn {
+    background: none;
+    border: none;
+    color: #dc3545;
+    font-size: 1.2rem;
+    cursor: pointer;
+    padding: 0.2rem 0.5rem;
+}
+
+.delete-btn:hover {
+    background-color: #ffebee;
+    border-radius: 4px;
 }
 
 h1 {
