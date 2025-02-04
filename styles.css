@@ -20,6 +20,8 @@ body {
     background: white;
     border-radius: 15px;
     box-shadow: 0 0 20px rgba(0,0,0,0.1);
+    position: relative;
+    z-index: 1;
 }
 
 h1 {
@@ -280,53 +282,48 @@ textarea {
     z-index: 2;
 }
 
+/* 抽獎結果顯示樣式 */
 .lottery-results {
     position: fixed;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
-    background: rgba(0, 0, 0, 0.8);
+    background-color: rgba(0, 0, 0, 0.5);
     display: none;
     justify-content: center;
     align-items: center;
-    z-index: 1000;
+    z-index: 1500;
 }
 
 .lottery-results.show {
-    display: flex;
+    display: flex !important;
 }
 
 .results-content {
     background: white;
     padding: 2rem;
-    border-radius: 15px;
-    max-width: 600px;
+    border-radius: 12px;
     width: 90%;
-    max-height: 80vh;
-    overflow-y: auto;
+    max-width: 500px;
     position: relative;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    margin: auto;
 }
 
-.results-content h2 {
-    text-align: center;
-    color: var(--primary-color);
+.results-list {
     margin-bottom: 1.5rem;
 }
 
 .result-item {
-    background: #f8f9fa;
-    padding: 1rem;
-    border-radius: 8px;
     margin-bottom: 1rem;
-    border-left: 4px solid var(--primary-color);
+    padding: 1rem;
+    background: #f8f9fa;
+    border-radius: 8px;
 }
 
 .result-item h3 {
-    color: #333;
     margin: 0 0 0.5rem 0;
-    font-size: 1.1rem;
+    color: var(--primary-color);
 }
 
 .result-item p {
@@ -343,16 +340,12 @@ textarea {
     color: #666;
     cursor: pointer;
     padding: 0.5rem;
-    font-size: 1rem;
+    font-size: 1.2rem;
     transition: color 0.3s;
 }
 
 .close-results:hover {
     color: var(--primary-color);
-}
-
-.results-list {
-    margin-bottom: 1rem;
 }
 
 .history-section {
@@ -529,13 +522,13 @@ textarea {
     right: 0;
     bottom: 0;
     background-color: rgba(0, 0, 0, 0.5);
-    z-index: 1000;
+    z-index: 2000;
     justify-content: center;
     align-items: center;
 }
 
 .modal.show {
-    display: flex !important;  /* 強制顯示 */
+    display: flex !important;
 }
 
 .modal-content {
@@ -545,9 +538,10 @@ textarea {
     width: 90%;
     max-width: 500px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
-    position: relative;  /* 確保內容正確定位 */
-    transform: translateY(0);  /* 防止內容偏移 */
-    margin: auto;  /* 確保置中 */
+    position: relative;
+    transform: translateY(0);
+    margin: auto;
+    animation: modalShow 0.3s ease;
 }
 
 .modal-content h2 {
@@ -637,4 +631,16 @@ textarea {
 
 .modal-confirm:hover {
     background: #ff5252;
+}
+
+/* 添加彈窗動畫 */
+@keyframes modalShow {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 } 
