@@ -57,7 +57,8 @@ textarea {
 #prizes-container {
     display: flex;
     flex-direction: column;
-    gap: 0.8rem;
+    gap: 1rem;
+    padding: 0.5rem;
 }
 
 .prize-input {
@@ -65,17 +66,36 @@ textarea {
     grid-template-columns: 1fr 120px 40px;
     gap: 1rem;
     align-items: center;
-    padding: 1rem;
+    padding: 1.2rem;
     background: white;
-    border: 1px solid #eee;
-    border-radius: 8px;
+    border: 2px solid #f0f0f0;
+    border-radius: 12px;
     transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.02);
+    position: relative;
+    overflow: hidden;
+}
+
+.prize-input::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 4px;
+    background: var(--primary-color);
+    opacity: 0;
+    transition: opacity 0.3s ease;
 }
 
 .prize-input:hover {
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
     transform: translateY(-2px);
     border-color: var(--primary-color);
+}
+
+.prize-input:hover::before {
+    opacity: 1;
 }
 
 .prize-input input {
@@ -84,16 +104,24 @@ textarea {
     border-radius: 8px;
     font-size: 1rem;
     transition: all 0.3s ease;
+    background-color: #fafafa;
+}
+
+.prize-input input:hover {
+    background-color: white;
+    border-color: #e0e0e0;
 }
 
 .prize-input input:focus {
     border-color: var(--primary-color);
     box-shadow: 0 0 0 3px rgba(255,107,107,0.1);
     outline: none;
+    background-color: white;
 }
 
 .prize-input .prize-name {
     width: 100%;
+    font-weight: 500;
 }
 
 .prize-input .prize-quantity {
@@ -102,6 +130,7 @@ textarea {
     appearance: textfield;
     -moz-appearance: textfield;
     -webkit-appearance: textfield;
+    font-weight: 500;
 }
 
 .prize-input .prize-quantity::-webkit-outer-spin-button,
@@ -130,6 +159,11 @@ textarea {
     justify-content: center;
     transition: all 0.3s ease;
     padding: 0;
+    opacity: 0.6;
+}
+
+.prize-input:hover .delete-btn {
+    opacity: 1;
 }
 
 .prize-input .delete-btn:hover {
@@ -158,14 +192,13 @@ textarea {
 }
 
 .wheel-container {
-    display: none;
     position: fixed;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
     background-color: rgba(0,0,0,0.8);
-    display: flex;
+    display: none;
     justify-content: center;
     align-items: center;
 }
