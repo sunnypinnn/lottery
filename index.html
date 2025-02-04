@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>幸運抽獎系統</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <h1>🎉 幸運抽獎系統 🎉</h1>
+        
+        <div class="input-section">
+            <div class="input-group">
+                <label for="lottery-numbers">抽獎序號</label>
+                <textarea id="lottery-numbers" placeholder="請輸入抽獎序號，多個序號請用逗號分隔"></textarea>
+            </div>
+            
+            <div class="input-group">
+                <label for="excluded-numbers">排除序號</label>
+                <textarea id="excluded-numbers" placeholder="請輸入要排除的序號，多個序號請用逗號分隔"></textarea>
+            </div>
+            
+            <div class="input-group">
+                <label>獎品列表</label>
+                <div id="prizes-container">
+                    <!-- 獎品輸入欄位會由 JavaScript 動態生成 -->
+                </div>
+            </div>
+        </div>
+
+        <button id="start-lottery" class="lottery-button">
+            <i class="fas fa-gift"></i> 開始抽獎
+        </button>
+
+        <div id="wheel-container" class="wheel-container">
+            <div class="wheel">
+                <div class="wheel-inner"></div>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html> 

@@ -1,0 +1,140 @@
+:root {
+    --primary-color: #ff6b6b;
+    --secondary-color: #4ecdc4;
+    --background-color: #f7f7f7;
+    --text-color: #2d3436;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Arial', sans-serif;
+    background-color: var(--background-color);
+    color: var(--text-color);
+}
+
+.container {
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.1);
+}
+
+h1 {
+    text-align: center;
+    color: var(--primary-color);
+    margin-bottom: 2rem;
+}
+
+.input-section {
+    display: grid;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.input-group {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+    color: var(--text-color);
+}
+
+textarea {
+    padding: 0.8rem;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    resize: vertical;
+    min-height: 100px;
+    font-size: 1rem;
+}
+
+#prizes-container {
+    display: grid;
+    gap: 1rem;
+}
+
+.prize-input {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+
+.prize-input input {
+    flex: 1;
+    padding: 0.8rem;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    font-size: 1rem;
+}
+
+.lottery-button {
+    display: block;
+    width: 200px;
+    margin: 2rem auto;
+    padding: 1rem 2rem;
+    font-size: 1.2rem;
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: transform 0.2s, background-color 0.2s;
+}
+
+.lottery-button:hover {
+    background-color: #ff5252;
+    transform: scale(1.05);
+}
+
+.wheel-container {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0,0,0,0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.wheel {
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    position: relative;
+    overflow: hidden;
+    background: conic-gradient(
+        var(--primary-color) 0% 10%,
+        var(--secondary-color) 10% 20%,
+        #ffd93d 20% 30%,
+        #6c5ce7 30% 40%,
+        #a8e6cf 40% 50%,
+        #ff8b94 50% 60%,
+        #ffd3b6 60% 70%,
+        #00b894 70% 80%,
+        #fd79a8 80% 90%,
+        #81ecec 90% 100%
+    );
+    transform: rotate(0deg);
+    transition: transform 4s cubic-bezier(0.17, 0.67, 0.12, 0.99);
+}
+
+.wheel-inner {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 50px;
+    height: 50px;
+    background: white;
+    border-radius: 50%;
+    z-index: 2;
+} 
