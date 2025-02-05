@@ -58,10 +58,32 @@ document.addEventListener('DOMContentLoaded', function() {
         return prizeDiv;
     }
 
-    // 初始化獎品列表
-    for (let i = 1; i <= 10; i++) {
-        prizesContainer.appendChild(createPrizeInput(i));
-    }
+    // 修改初始化獎品列表的部分
+    const initialPrizes = [
+        { name: "韓國雙人來回機票", quantity: 1 },
+        { name: "膠囊寵物自動餵食器", quantity: 1 },
+        { name: "大大渦流飲水機", quantity: 1 },
+        { name: "訂單免單", quantity: 1 },
+        { name: "寵物拍立得", quantity: 1 },
+        { name: "陪陪肉肉一年份", quantity: 1 },
+        { name: "陪陪貓泥一年份", quantity: 1 },
+        { name: "陪陪肉肉半年份", quantity: 3 },
+        { name: "陪陪貓泥半年份", quantity: 3 },
+        { name: "陪陪肉肉組", quantity: 5 },
+        { name: "陪陪肉肉組", quantity: 5 },
+        { name: "官網免運券", quantity: 20 },
+        { name: "官網100元折扣券", quantity: 10 }
+    ];
+
+    // 修改初始化函數
+    // 將原本的 for 循環替換為：
+    prizesContainer.innerHTML = ''; // 清空容器
+    initialPrizes.forEach((prize, index) => {
+        const prizeDiv = createPrizeInput(index + 1);
+        prizeDiv.querySelector('.prize-name').value = prize.name;
+        prizeDiv.querySelector('.prize-quantity').value = prize.quantity;
+        prizesContainer.appendChild(prizeDiv);
+    });
 
     // 在獎品列表區域添加新增按鈕
     const addPrizeButton = document.createElement('button');
