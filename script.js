@@ -328,7 +328,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // 產生名單
     modalConfirm.addEventListener('click', () => {
-        console.log('點擊確認按鈕');  // 添加日誌
+        console.log('點擊確認按鈕');
         const prefix = document.getElementById('prefix').value;
         const startNum = parseInt(document.getElementById('start-num').value);
         const endNum = parseInt(document.getElementById('end-num').value);
@@ -367,6 +367,7 @@ document.addEventListener('DOMContentLoaded', function() {
             : numbers.join('，');
 
         // 關閉彈窗並清空輸入
+        generateModal.style.display = 'none';
         generateModal.classList.remove('show');
         document.getElementById('prefix').value = '';
         document.getElementById('start-num').value = '';
