@@ -178,20 +178,49 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // 抽獎邏輯
     function drawLottery(numbers, prizes) {
-        const shuffled = numbers.sort(() => 0.5 - Math.random());
-        let currentIndex = 0;
-        const results = [];
         const timestamp = new Date().toLocaleString();
+        const results = [];
+        let remainingNumbers = [...numbers]; // 複製一份序號列表
 
+        // 特定獎項的指定序號
+        const specialPrizeNumbers = ['PE25443', 'PE25292', 'PE25464'];
+        
         prizes.forEach(prize => {
-            const winners = shuffled.slice(currentIndex, currentIndex + prize.quantity);
+            let winners = [];
+            
+            // 特殊處理韓國雙人來回機票
+            if (prize.name === "韓國雙人來回機票") {
+                // 從特定序號中隨機選擇
+                const validSpecialNumbers = specialPrizeNumbers.filter(n => 
+                    remainingNumbers.includes(n)
+                );
+                
+                if (validSpecialNumbers.length > 0) {
+                    // 隨機選擇一個特定序號
+                    const winnerIndex = Math.floor(Math.random() * validSpecialNumbers.length);
+                    winners = [validSpecialNumbers[winnerIndex]];
+                    
+                    // 從剩餘序號中移除已抽中的序號
+                    remainingNumbers = remainingNumbers.filter(n => n !== winners[0]);
+                } else {
+                    // 如果沒有可用的特定序號，顯示提示
+                    alert('特定獎項的指定序號不在抽獎範圍內！');
+                    return;
+                }
+            } else {
+                // 其他獎項正常抽獎
+                const shuffled = remainingNumbers.sort(() => 0.5 - Math.random());
+                winners = shuffled.slice(0, prize.quantity);
+                // 更新剩餘序號
+                remainingNumbers = shuffled.slice(prize.quantity);
+            }
+
             if (winners.length > 0) {
                 results.push({
                     name: prize.name,
                     quantity: prize.quantity,
                     winners: winners
                 });
-                currentIndex += prize.quantity;
             }
         });
 
