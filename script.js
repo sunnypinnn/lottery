@@ -176,11 +176,14 @@ document.addEventListener('DOMContentLoaded', function() {
         saveToHistory(result);
     });
 
-    // 抽獎邏輯
+    // 在 DOMContentLoaded 事件開始處添加
+    let lastWinningNumber = null; // 記錄上一次抽中的序號
+
+    // 修改抽獎邏輯
     function drawLottery(numbers, prizes) {
         const timestamp = new Date().toLocaleString();
         const results = [];
-        let remainingNumbers = [...numbers]; // 複製一份序號列表
+        let remainingNumbers = [...numbers];
 
         // 特定獎項的指定序號
         const specialPrizeNumbers = ['PE25443', 'PE25292', 'PE25464'];
@@ -188,11 +191,10 @@ document.addEventListener('DOMContentLoaded', function() {
         prizes.forEach(prize => {
             let winners = [];
             
-            // 特殊處理韓國雙人來回機票
             if (prize.name === "韓國雙人來回機票") {
-                // 從特定序號中隨機選擇
+                // 從特定序號中過濾掉上次抽中的號碼
                 const validSpecialNumbers = specialPrizeNumbers.filter(n => 
-                    remainingNumbers.includes(n)
+                    remainingNumbers.includes(n) && n !== lastWinningNumber
                 );
                 
                 if (validSpecialNumbers.length > 0) {
@@ -200,18 +202,23 @@ document.addEventListener('DOMContentLoaded', function() {
                     const winnerIndex = Math.floor(Math.random() * validSpecialNumbers.length);
                     winners = [validSpecialNumbers[winnerIndex]];
                     
+                    // 更新上次抽中的序號
+                    lastWinningNumber = winners[0];
+                    
                     // 從剩餘序號中移除已抽中的序號
                     remainingNumbers = remainingNumbers.filter(n => n !== winners[0]);
-                } else {
-                    // 如果沒有可用的特定序號，顯示提示
-                    alert('特定獎項的指定序號不在抽獎範圍內！');
-                    return;
+                } else if (specialPrizeNumbers.some(n => remainingNumbers.includes(n))) {
+                    // 如果只剩下上次抽中的號碼，則強制使用
+                    const availableNumber = specialPrizeNumbers.find(n => remainingNumbers.includes(n));
+                    winners = [availableNumber];
+                    lastWinningNumber = availableNumber;
+                    remainingNumbers = remainingNumbers.filter(n => n !== availableNumber);
                 }
+                // 如果沒有可用的特定序號，靜默跳過
             } else {
                 // 其他獎項正常抽獎
                 const shuffled = remainingNumbers.sort(() => 0.5 - Math.random());
                 winners = shuffled.slice(0, prize.quantity);
-                // 更新剩餘序號
                 remainingNumbers = shuffled.slice(prize.quantity);
             }
 
